@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:HotelBooking.ViewModels"
+             x:Class="HotelBooking.Views.CreateUserView">
+  
+    <UserControl.DataContext>
+		<vm:CreateUserViewModel/>
+    </UserControl.DataContext>
+
+    <Grid ColumnDefinitions="1*, 1*, 1*" RowDefinitions="0.5*, 5*, 0.5*">
+
+
+    <Border Grid.Column="1" Grid.Row="1" Background="lightgray" Padding="15">
+
+       <StackPanel Spacing="10">
+            <!-- Fullname -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Full name:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Full name" Text="{Binding FullName, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <!-- Age -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Age" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Age" Text="{Binding Age, Mode=TwoWay}"/>
+            </StackPanel>
+
+
+            <!-- Email -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Email:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Enter email" Text="{Binding Email, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <!-- Password -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Password:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Enter password" PasswordChar="*" Text="{Binding Password, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0"
+                           Text="Have an account?"
+                           VerticalAlignment="Center"/>
+
+                <!--Login-->
+                <Button Grid.Column="1"
+                        Content="Login"
+                        FontSize="16"
+                        CornerRadius="10"
+                        Padding="8,4"
+                        Click="LoginButton_click"/>
+            </Grid>
+
+           <!--Create-->
+            <Button Content="Create"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Padding="10,5"
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Border>
+    
+</Grid>
+
+</UserControl>

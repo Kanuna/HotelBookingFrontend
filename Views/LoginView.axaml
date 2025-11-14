@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:HotelBooking.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="HotelBooking.Views.LoginView">
+  
+    <UserControl.DataContext>
+    <vm:LoginViewModel/>
+    </UserControl.DataContext>
+
+
+    <Grid ColumnDefinitions="1*, 1*, 1*" RowDefinitions="1*, 2*, 1*">
+
+
+    <Border Grid.Column="1" Grid.Row="1" Background="lightgray" Padding="15">
+
+       <StackPanel Spacing="10">
+
+            <!-- Email -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Email:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Enter email" Text="{Binding Email, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <!-- Password -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Password:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Enter password" PasswordChar="*" Text="{Binding Password, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0"
+                           Text="Don't have an account?"
+                           VerticalAlignment="Center"/>
+
+                <!--Create-->
+                <Button Grid.Column="1"
+                        Content="Create"
+                        FontSize="16"
+                        CornerRadius="10"
+                        Padding="8,4"
+                        Click="CreateButton_click"/>
+            </Grid>
+
+           <!--Login-->
+            <Button Content="Login"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Padding="10,5"
+                    HorizontalAlignment="Center"
+                    Click="LoginButton_click"
+                    IsEnabled="{Binding CanLogin}"/>
+        </StackPanel>
+    </Border>
+    
+</Grid>
+
+</UserControl>

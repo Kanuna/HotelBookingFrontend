@@ -1,7 +1,18 @@
 ﻿using ReactiveUI;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace HotelBooking.ViewModels;
 
-public class ViewModelBase : ReactiveObject
+public class ViewModelBase : ReactiveObject, INotifyPropertyChanged
 {
+    public ViewModelBase CurrentView { get; set; }
+
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
