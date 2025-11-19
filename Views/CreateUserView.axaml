@@ -6,11 +6,8 @@
              xmlns:vm="using:HotelBooking.ViewModels"
              x:Class="HotelBooking.Views.CreateUserView">
   
-    <UserControl.DataContext>
-		<vm:CreateUserViewModel/>
-    </UserControl.DataContext>
 
-    <Grid ColumnDefinitions="1*, 1*, 1*" RowDefinitions="0.5*, 5*, 0.5*">
+    <Grid ColumnDefinitions="1*, 1*, 1*" RowDefinitions="0.3*, 6*, 0.3*">
 
 
     <Border Grid.Column="1" Grid.Row="1" Background="lightgray" Padding="15">
@@ -19,20 +16,27 @@
             <!-- Fullname -->
             <StackPanel Spacing="3">
                 <TextBlock Text="Full name:" FontWeight="Bold" FontSize="14"/>
-                <TextBox Watermark="Full name" Text="{Binding FullName, Mode=TwoWay}"/>
+                <TextBox Watermark="Full name" Text="{Binding Fullname, Mode=TwoWay}"/>
             </StackPanel>
 
             <!-- Age -->
             <StackPanel Spacing="3">
                 <TextBlock Text="Age" FontWeight="Bold" FontSize="14"/>
-                <TextBox Watermark="Age" Text="{Binding Age, Mode=TwoWay}"/>
+                <NumericUpDown Watermark="Age" Maximum="110" FormatString="0" Value="{Binding Age, Mode=TwoWay}"/>
             </StackPanel>
 
 
+           <!--ContactInfo-->
             <!-- Email -->
             <StackPanel Spacing="3">
                 <TextBlock Text="Email:" FontWeight="Bold" FontSize="14"/>
-                <TextBox Watermark="Enter email" Text="{Binding Email, Mode=TwoWay}"/>
+                <TextBox Watermark="Enter email" Text="{Binding ContactInfo.Email, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <!-- PhoneNumber -->
+            <StackPanel Spacing="3">
+                <TextBlock Text="Phone number:" FontWeight="Bold" FontSize="14"/>
+                <TextBox Watermark="Enter phone number" Text="{Binding ContactInfo.Phone, Mode=TwoWay}"/>
             </StackPanel>
 
             <!-- Password -->
@@ -60,7 +64,9 @@
                     FontSize="18"
                     CornerRadius="10"
                     Padding="10,5"
-                    HorizontalAlignment="Center"/>
+                    HorizontalAlignment="Center"
+                    IsEnabled="{Binding CanCreate}"
+                    Command="{Binding CreateUserCommand}"/>
         </StackPanel>
     </Border>
     

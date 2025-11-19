@@ -6,8 +6,6 @@ namespace HotelBooking.ViewModels;
 
 public class ViewModelBase : ReactiveObject, INotifyPropertyChanged
 {
-    public ViewModelBase CurrentView { get; set; }
-
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
